@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Gestion de Flotte NC MALI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>🚛 Flotte NC</h1>
+                <p>MALI</p>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="/">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/comparatif">
+                        <span class="material-icons">emoji_events</span>
+                        Comparatif
+                    </a>
+                </li>
+                {% for i in range(1, 6) %}
+                <li>
+                    <a href="/camion/CAMION_{{i}}">
+                        <span class="material-icons">local_shipping</span>
+                        Camion {{i}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="user-info">
+                <p>{{ current_user.username }}</p>
+                <span class="badge">{{ current_user.role }}</span>
+                <a href="/logout" class="logout-btn">
+                    <span class="material-icons">logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>👤 Mon Profil</h1>
+                <div class="date-display" id="currentDate"></div>
+            </header>
+
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            {{ current_user.username[0].upper() }}
+                        </div>
+                        <div class="profile-details">
+                            <h2>{{ current_user.username }}</h2>
+                            <span class="role-badge">{{ current_user.role }}</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h3>Informations du compte</h3>
+                        <p><strong>ID Utilisateur:</strong> {{ current_user.id }}</p>
+                        <p><strong>Nom d'utilisateur:</strong> {{ current_user.username }}</p>
+                        <p><strong>Rôle:</strong> {{ current_user.role }}</p>
+                        
+                        {% if current_user.role == 'admin' %}
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 8px;">
+                            <h4 style="color: #27ae60; margin-bottom: 0.5rem;">🔑 Privilèges Admin</h4>
+                            <p style="color: #555;">Vous avez accès à la gestion des utilisateurs via l'API.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Afficher la date actuelle
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

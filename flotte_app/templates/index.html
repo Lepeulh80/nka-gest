@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚛 Gestion de Flotte NC MALI - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo-nc.png') }}" alt="NC Mali Logo" onerror="this.style.display='none'">
+                <h1>NC MALI</h1>
+                <p>Gestion de Flotte</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="active">
+                    <a href="/">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/comparatif">
+                        <span class="material-icons">emoji_events</span>
+                        Comparatif
+                    </a>
+                </li>
+                {% for i in range(1, 6) %}
+                <li>
+                    <a href="/camion/CAMION_{{i}}">
+                        <span class="material-icons">local_shipping</span>
+                        Camion {{i}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="user-info">
+                <p>{{ current_user.username }}</p>
+                <span class="badge">{{ current_user.role }}</span>
+                <a href="/logout" class="logout-btn">
+                    <span class="material-icons">logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>📊 Tableau de Bord - Gestion de Flotte</h1>
+                <div class="date-display" id="currentDate"></div>
+            </header>
+
+            <!-- Alertes de Maintenance -->
+            <section class="alerts-section" id="alertsSection" style="display: none;">
+                <h2>⚠️ Alertes de Maintenance</h2>
+                <div class="alerts-container" id="alertsContainer">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </section>
+
+            <!-- KPI Cards -->
+            <section class="kpi-section">
+                <div class="kpi-card revenue">
+                    <div class="kpi-icon">💰</div>
+                    <div class="kpi-info">
+                        <h3>Revenus Totaux</h3>
+                        <p class="kpi-value" id="totalRevenu">0 FCFA</p>
+                        <span class="kpi-label">Tous camions confondus</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card expense">
+                    <div class="kpi-icon">💳</div>
+                    <div class="kpi-info">
+                        <h3>Dépenses Totales</h3>
+                        <p class="kpi-value" id="totalDepense">0 FCFA</p>
+                        <span class="kpi-label">Tous camions confondus</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card profit">
+                    <div class="kpi-icon">📈</div>
+                    <div class="kpi-info">
+                        <h3>Bénéfice Net</h3>
+                        <p class="kpi-value" id="beneficeNet">0 FCFA</p>
+                        <span class="kpi-label">Marge: <span id="margeMoyenne">0%</span></span>
+                    </div>
+                </div>
+
+                <div class="kpi-card trucks">
+                    <div class="kpi-icon">🚚</div>
+                    <div class="kpi-info">
+                        <h3>Camions Actifs</h3>
+                        <p class="kpi-value" id="camionsActifs">0 / 5</p>
+                        <span class="kpi-label">Véhicules en opération</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h2>📊 Répartition Revenus/Dépenses par Camion</h2>
+                    <canvas id="revenueExpenseChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h2>📈 Performance par Camion (Marge %)</h2>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Trucks Overview Table -->
+            <section class="table-section">
+                <h2>🚚 Aperçu des Camions</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Camion</th>
+                                <th>Revenu (FCFA)</th>
+                                <th>Dépense (FCFA)</th>
+                                <th>Bénéfice (FCFA)</th>
+                                <th>Marge (%)</th>
+                                <th>Transactions</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="camionsTableBody">
+                            <!-- Rempli dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="recent-section">
+                <h2>📝 Transactions Récentes</h2>
+                <div class="transactions-list" id="recentTransactions">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

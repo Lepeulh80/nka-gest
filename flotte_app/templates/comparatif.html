@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Comparatif Performance - Gestion de Flotte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo-nc.png') }}" alt="NC Mali Logo" onerror="this.style.display='none'"><h1>NC MALI</h1><p>Gestion de Flotte</p>
+                <p>MALI</p>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="/">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/comparatif">
+                        <span class="material-icons">emoji_events</span>
+                        Comparatif
+                    </a>
+                </li>
+                {% for i in range(1, 6) %}
+                <li>
+                    <a href="/camion/CAMION_{{i}}">
+                        <span class="material-icons">local_shipping</span>
+                        Camion {{i}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="user-info">
+                <p>{{ current_user.username }}</p>
+                <span class="badge">{{ current_user.role }}</span>
+                <a href="/logout" class="logout-btn">
+                    <span class="material-icons">logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>🏆 Comparatif de Performance</h1>
+                <a href="/" class="btn-view">← Retour au Dashboard</a>
+            </header>
+
+            <!-- Podium Section -->
+            <section class="podium-section">
+                <h2>🥇 Podium de la Rentabilité</h2>
+                <div class="podium-container">
+                    <div class="podium-item second" id="podium2">
+                        <div class="medal">🥈</div>
+                        <div class="rank">2ème</div>
+                        <div class="camion-name">-</div>
+                        <div class="marge">-</div>
+                    </div>
+                    <div class="podium-item first" id="podium1">
+                        <div class="medal">🥇</div>
+                        <div class="rank">1er</div>
+                        <div class="camion-name">-</div>
+                        <div class="marge">-</div>
+                    </div>
+                    <div class="podium-item third" id="podium3">
+                        <div class="medal">🥉</div>
+                        <div class="rank">3ème</div>
+                        <div class="camion-name">-</div>
+                        <div class="marge">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ranking Table -->
+            <section class="table-section">
+                <h2>📊 Classement Complet par Performance</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rang</th>
+                                <th>Camion</th>
+                                <th>Revenu (FCFA)</th>
+                                <th>Dépense (FCFA)</th>
+                                <th>Bénéfice (FCFA)</th>
+                                <th>Marge (%)</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingTableBody">
+                            <!-- Rempli dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Comparison Charts -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h2>📈 Comparaison des Marges (%)</h2>
+                    <canvas id="marginComparisonChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h2>💰 Revenus vs Dépenses</h2>
+                    <canvas id="revenueVsExpenseChart"></canvas>
+                </div>
+
+                <div class="chart-container" style="grid-column: 1 / -1;">
+                    <h2>🎯 Analyse Comparative Complète</h2>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/comparatif.js') }}"></script>
+</body>
+</html>
