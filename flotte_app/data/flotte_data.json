@@ -1,0 +1,377 @@
+{
+  "CAMION_1": {
+    "nom": "CAMION 1",
+    "maintenance": {
+      "vidange": {"date_derniere": "2026-01-15", "periodicite_jours": 30, "kilometrage_dernier": 5000, "kilometrage_interval": 5000},
+      "pneus": {"date_derniere": "2026-02-24", "periodicite_jours": 90, "kilometrage_dernier": 12000, "kilometrage_interval": 20000},
+      "freins": {"date_derniere": "2026-01-01", "periodicite_jours": 60, "kilometrage_dernier": 3000, "kilometrage_interval": 15000},
+      "controle_technique": {"date_derniere": "2025-12-01", "periodicite_jours": 180, "kilometrage_dernier": 0, "kilometrage_interval": 50000}
+    },
+    "transactions": [
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "1100 L",
+        "revenu": 0,
+        "depense": 737000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "🛣️ FRAIS DE ROUTE",
+        "description": "Aller-Retour",
+        "revenu": 0,
+        "depense": 360000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "400 L Suplémentaire ",
+        "revenu": 0,
+        "depense": 268000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Douane pour caroserie pas dans les normes ",
+        "revenu": 0,
+        "depense": 204000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "🔧 REPARATION",
+        "description": "4 Pneus *110 000",
+        "revenu": 0,
+        "depense": 457600.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Révenu",
+        "revenu": 3500000.0,
+        "depense": 0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "💰 SALAIRE",
+        "description": "1mois",
+        "revenu": 0,
+        "depense": 100000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "🔧EPARATION",
+        "description": "1 Pneu",
+        "revenu": 0,
+        "depense": 110000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Eau bloutc",
+        "revenu": 0,
+        "depense": 50000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "🛠️ ENTRETIEN",
+        "description": "Air",
+        "revenu": 0,
+        "depense": 3000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "1100 L",
+        "revenu": 0,
+        "depense": 737000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-12 00:00:00",
+        "categorie": "🛣️ FRAIS DE ROUTE",
+        "description": "Aller-Retour",
+        "revenu": 0,
+        "depense": 360000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Vignette",
+        "revenu": 0,
+        "depense": 290000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "27/0/2026",
+        "categorie": "⚙️ AUTRES",
+        "description": "Ration",
+        "revenu": 0,
+        "depense": 25000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "TOTAL",
+        "categorie": 3500000,
+        "description": 3751600,
+        "revenu": 0,
+        "depense": 0,
+        "paiement": NaN
+      }
+    ]
+  },
+  "CAMION_2": {
+    "nom": "CAMION 2",
+    "maintenance": {
+      "vidange": {"date_derniere": "2026-03-27", "periodicite_jours": 30, "kilometrage_dernier": 8000, "kilometrage_interval": 5000},
+      "pneus": {"date_derniere": "2026-03-27", "periodicite_jours": 90, "kilometrage_dernier": 15000, "kilometrage_interval": 20000},
+      "freins": {"date_derniere": "2026-02-01", "periodicite_jours": 60, "kilometrage_dernier": 10000, "kilometrage_interval": 15000},
+      "controle_technique": {"date_derniere": "2025-11-15", "periodicite_jours": 180, "kilometrage_dernier": 0, "kilometrage_interval": 50000}
+    },
+    "transactions": [
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "1300 L",
+        "revenu": 0,
+        "depense": 871000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "🛣️ FRAIS DE ROUTE",
+        "description": "Aller-Retour",
+        "revenu": 0,
+        "depense": 360000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "🔧 REPARATION",
+        "description": "Frais de réparation camion",
+        "revenu": 0,
+        "depense": 390250.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "200 L Suplementaire",
+        "revenu": 0,
+        "depense": 134000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-24 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Arrangement Police",
+        "revenu": 0,
+        "depense": 10000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-27 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "Revenu",
+        "revenu": 3500000.0,
+        "depense": 0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-27 00:00:00",
+        "categorie": "⛽ CARBURANT",
+        "description": "1300 L",
+        "revenu": 0,
+        "depense": 871000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-27 00:00:00",
+        "categorie": "🛣️ FRAIS DE ROUTE",
+        "description": "Aller-Retour",
+        "revenu": 0,
+        "depense": 360000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-27 00:00:00",
+        "categorie": "💰 SALAIRE",
+        "description": "2 mois de Salaire",
+        "revenu": 0,
+        "depense": 200000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-02-27 00:00:00",
+        "categorie": "🏅 PRIME",
+        "description": "1 Voyage",
+        "revenu": 0,
+        "depense": 50000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "💰 SALAIRE",
+        "description": "1 mois salaire",
+        "revenu": 0,
+        "depense": 100000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🏅 PRIME",
+        "description": "1 voyage",
+        "revenu": 0,
+        "depense": 50000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "💰 SALAIRE",
+        "description": "1 mois de salaire qui était passé",
+        "revenu": 0,
+        "depense": 100000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🏅 PRIME",
+        "description": "1voyage",
+        "revenu": 0,
+        "depense": 50000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🔧 REPARATION",
+        "description": "Jante",
+        "revenu": 0,
+        "depense": 35000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🛠️ ENTRETIEN",
+        "description": "Huile Moteur",
+        "revenu": 0,
+        "depense": 130000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🛠️ ENTRETIEN",
+        "description": "Climatisation",
+        "revenu": 0,
+        "depense": 15000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "⚙️ AUTRES",
+        "description": "vignette",
+        "revenu": 0,
+        "depense": 290000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🛠️ ENTRETIEN",
+        "description": "vidange",
+        "revenu": 0,
+        "depense": 124000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🔧 REPARATION",
+        "description": "Pneus",
+        "revenu": 0,
+        "depense": 360000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "2026-03-27 00:00:00",
+        "categorie": "🔧 REPARATION",
+        "description": "Montage Pneu",
+        "revenu": 0,
+        "depense": 3000.0,
+        "paiement": "Espèce"
+      },
+      {
+        "date": "TOTAL",
+        "categorie": 3500000,
+        "description": 4503250,
+        "revenu": 0,
+        "depense": 0,
+        "paiement": NaN
+      }
+    ]
+  },
+  "CAMION_3": {
+    "nom": "CAMION 3",
+    "maintenance": {
+      "vidange": {"date_derniere": "2026-01-10", "periodicite_jours": 30, "kilometrage_dernier": 2000, "kilometrage_interval": 5000},
+      "pneus": {"date_derniere": "2025-12-01", "periodicite_jours": 90, "kilometrage_dernier": 5000, "kilometrage_interval": 20000},
+      "freins": {"date_derniere": "2025-11-20", "periodicite_jours": 60, "kilometrage_dernier": 1000, "kilometrage_interval": 15000},
+      "controle_technique": {"date_derniere": "2025-10-01", "periodicite_jours": 180, "kilometrage_dernier": 0, "kilometrage_interval": 50000}
+    },
+    "transactions": [
+      {
+        "date": "TOTAL",
+        "categorie": 0.0,
+        "description": 0.0,
+        "revenu": 0,
+        "depense": 0,
+        "paiement": NaN
+      }
+    ]
+  },
+  "CAMION_4": {
+    "nom": "CAMION 4",
+    "maintenance": {
+      "vidange": {"date_derniere": "2026-03-01", "periodicite_jours": 30, "kilometrage_dernier": 3000, "kilometrage_interval": 5000},
+      "pneus": {"date_derniere": "2026-02-15", "periodicite_jours": 90, "kilometrage_dernier": 8000, "kilometrage_interval": 20000},
+      "freins": {"date_derniere": "2026-03-10", "periodicite_jours": 60, "kilometrage_dernier": 5000, "kilometrage_interval": 15000},
+      "controle_technique": {"date_derniere": "2026-01-20", "periodicite_jours": 180, "kilometrage_dernier": 0, "kilometrage_interval": 50000}
+    },
+    "transactions": [
+      {
+        "date": "TOTAL",
+        "categorie": 0.0,
+        "description": 0.0,
+        "revenu": 0,
+        "depense": 0,
+        "paiement": NaN
+      }
+    ]
+  },
+  "CAMION_5": {
+    "nom": "CAMION 5",
+    "maintenance": {
+      "vidange": {"date_derniere": "2026-02-20", "periodicite_jours": 30, "kilometrage_dernier": 4000, "kilometrage_interval": 5000},
+      "pneus": {"date_derniere": "2026-01-05", "periodicite_jours": 90, "kilometrage_dernier": 10000, "kilometrage_interval": 20000},
+      "freins": {"date_derniere": "2026-02-10", "periodicite_jours": 60, "kilometrage_dernier": 6000, "kilometrage_interval": 15000},
+      "controle_technique": {"date_derniere": "2025-09-01", "periodicite_jours": 180, "kilometrage_dernier": 0, "kilometrage_interval": 50000}
+    },
+    "transactions": [
+      {
+        "date": "TOTAL",
+        "categorie": 0.0,
+        "description": 0.0,
+        "revenu": 0,
+        "depense": 0,
+        "paiement": NaN
+      }
+    ]
+  }
+}

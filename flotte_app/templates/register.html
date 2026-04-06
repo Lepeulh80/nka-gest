@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Gestion de Flotte NC MALI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1>🚛 Flotte NC MALI</h1>
+            <p class="subtitle">Créez votre compte</p>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">
+                                <span class="material-icons" style="font-size: 1.2rem;">
+                                    {% if category == 'success' %}check_circle{% elif category == 'error' %}error{% else %}info{% endif %}
+                                </span>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" action="{{ url_for('register') }}">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required placeholder="Choisissez un nom d'utilisateur">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="Choisissez un mot de passe" minlength="6">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirmer le mot de passe</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirmez votre mot de passe">
+                </div>
+                
+                <button type="submit" class="btn-primary">S'inscrire</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Déjà un compte ? <a href="{{ url_for('login') }}">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

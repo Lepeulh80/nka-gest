@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚛 Détail Camion - Gestion de Flotte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo-nc.png') }}" alt="NC Mali Logo" onerror="this.style.display='none'"><h1>NC MALI</h1><p>Gestion de Flotte</p>
+                <p>MALI</p>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <a href="/">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/comparatif">
+                        <span class="material-icons">emoji_events</span>
+                        Comparatif
+                    </a>
+                </li>
+                {% for i in range(1, 6) %}
+                <li class="{{ 'active' if camion_id == 'CAMION_' + i|string else '' }}">
+                    <a href="/camion/CAMION_{{i}}">
+                        <span class="material-icons">local_shipping</span>
+                        Camion {{i}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="user-info">
+                <p>{{ current_user.username }}</p>
+                <span class="badge">{{ current_user.role }}</span>
+                <a href="/logout" class="logout-btn">
+                    <span class="material-icons">logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div>
+                    <h1 id="camionTitle">🚚 Détail du Camion</h1>
+                    <p id="camionDetails" style="color: #666; font-size: 0.9em; margin-top: 5px;"></p>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button onclick="openEditModal()" class="btn-view" style="background: #2196F3;">
+                        <span class="material-icons" style="font-size: 18px; vertical-align: middle;">edit</span>
+                        Modifier
+                    </button>
+                    <button onclick="deleteCamion()" class="btn-view" style="background: #f44336;">
+                        <span class="material-icons" style="font-size: 18px; vertical-align: middle;">delete</span>
+                        Supprimer
+                    </button>
+                    <a href="/" class="btn-view">← Retour au Dashboard</a>
+                </div>
+            </header>
+
+            <!-- Camion KPIs -->
+            <section class="kpi-section">
+                <div class="kpi-card revenue">
+                    <div class="kpi-icon">💰</div>
+                    <div class="kpi-info">
+                        <h3>Revenus</h3>
+                        <p class="kpi-value" id="camionRevenu">0 FCFA</p>
+                    </div>
+                </div>
+
+                <div class="kpi-card expense">
+                    <div class="kpi-icon">💳</div>
+                    <div class="kpi-info">
+                        <h3>Dépenses</h3>
+                        <p class="kpi-value" id="camionDepense">0 FCFA</p>
+                    </div>
+                </div>
+
+                <div class="kpi-card profit">
+                    <div class="kpi-icon">📈</div>
+                    <div class="kpi-info">
+                        <h3>Bénéfice</h3>
+                        <p class="kpi-value" id="camionBenefice">0 FCFA</p>
+                    </div>
+                </div>
+
+                <div class="kpi-card margin">
+                    <div class="kpi-icon">📊</div>
+                    <div class="kpi-info">
+                        <h3>Marge</h3>
+                        <p class="kpi-value" id="camionMarge">0%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Transaction Form -->
+            <section class="table-section">
+                <h2>➕ Ajouter une Transaction</h2>
+                <form id="addTransactionForm" class="transaction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="transDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Catégorie</label>
+                            <select id="transCategorie" required>
+                                <option value="">Sélectionner...</option>
+                                <option value="⛽ CARBURANT">⛽ Carburant</option>
+                                <option value="🛣️ FRAIS DE ROUTE">🛣️ Frais de route</option>
+                                <option value="🔧 REPARATION">🔧 Réparation</option>
+                                <option value="🛠️ ENTRETIEN">🛠️ Entretien</option>
+                                <option value="💰 SALAIRE">💰 Salaire</option>
+                                <option value="🏅 PRIME">🏅 Prime</option>
+                                <option value="⚙️ AUTRES">⚙️ Autres</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" id="transDescription" placeholder="Ex: 1100 L" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Revenu (FCFA)</label>
+                            <input type="number" id="transRevenu" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Dépense (FCFA)</label>
+                            <input type="number" id="transDepense" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Mode de Paiement</label>
+                            <select id="transPaiement">
+                                <option value="Espèce">Espèce</option>
+                                <option value="Virement">Virement</option>
+                                <option value="Chèque">Chèque</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn-view" style="width: 100%;">Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Transactions Chart -->
+            <section class="charts-section">
+                <div class="chart-container" style="grid-column: 1 / -1;">
+                    <h2>📊 Évolution des Transactions</h2>
+                    <canvas id="transactionsChart"></canvas>
+                </div>
+            </section>
+
+            <!-- All Transactions Table -->
+            <section class="table-section">
+                <h2>📝 Toutes les Transactions</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Catégorie</th>
+                                <th>Description</th>
+                                <th>Revenu (FCFA)</th>
+                                <th>Dépense (FCFA)</th>
+                                <th>Paiement</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTableBody">
+                            <!-- Rempli dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de modification du camion -->
+    <div id="editCamionModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px;">
+            <h2 style="margin-bottom: 20px;">✏️ Modifier le Camion</h2>
+            <form id="editCamionForm">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>Nom du camion</label>
+                    <input type="text" id="editNom" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>Modèle</label>
+                    <input type="text" id="editModele" placeholder="Ex: Volvo FH16" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label>Chauffeur</label>
+                    <input type="text" id="editChauffeur" placeholder="Ex: Jean Kouyaté" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button type="button" onclick="closeEditModal()" class="btn-view" style="background: #9e9e9e;">Annuler</button>
+                    <button type="submit" class="btn-view" style="background: #2196F3;">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/camion.js') }}"></script>
+    <script>
+        const CAMION_ID = '{{ camion_id }}';
+    </script>
+</body>
+</html>
